@@ -79,7 +79,7 @@ export default class App {
 | changeColor      | Function | color                                                                                                                                                                                    | `{ rgba: {}, hsv: {}}`             |
 | openSucker       | Function | isOpen                                                                                                                                                                                   | `true` or `false`                  |
 
-> if you want use sucker, then `openSucker`, `suckerHide` is necessary. and when `canvas` is ready, call function `colorpicker.canvasLoaded` width args `suckerCanvas` and `suckerArea`. when you click sucker button, you can click it again or press key of `esc` to exit.
+> if you want to use sucker, then `openSucker`, `suckerHide` is necessary. and when `canvas` is ready, you can call function `colorpicker.canvasLoaded` width args `suckerCanvas` and `suckerArea`. when you click sucker button, you can click it again or press key of `esc` to exit.
 
 ## colorpicker.canvasLoaded(options)
 
@@ -89,3 +89,7 @@ export default class App {
 | ------------ | ----------------- | ------- | --------------------------------------- |
 | suckerCanvas | HTMLCanvasElement | `null`  | like `document.createElement('canvas')` |
 | suckerArea   | Array             | `[]`    | like `[x1, y1, x2, y2]`                 |
+
+## colorpicker.close()
+
+> when you want to close colorpicker, you can call function `colorpicker.close()`, it can remember current color into history.
