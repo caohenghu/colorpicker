@@ -1,6 +1,6 @@
 {
     "name": "@caohenghu/colorpicker",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Colorpicker with no dependency",
     "main": "src/main.js",
     "scripts": {

@@ -8,7 +8,7 @@
 ## Install
 
 ```bash
-$ yarn add @caohenghu/olorpicker
+$ yarn add @caohenghu/colorpicker
 ```
 
 ## Example
