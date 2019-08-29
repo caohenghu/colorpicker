@@ -1,0 +1,12 @@
+.sucker {
+    width: 30px;
+    fill: #9099a4;
+    background: #2e333a;
+    vertical-align: top;
+    cursor: pointer;
+    transition: all 0.3s;
+    &:hover,
+    &.active {
+        fill: #1593ff;
+    }
+}
