@@ -65,30 +65,27 @@ export default class App {
 }
 ```
 
-## Options
-
-| Name               | Type    | Default                                                                                                                                                                                  | Description                        |
-| ------------------ | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------- |
-| theme              | String  | `dark`                                                                                                                                                                                   | `dark` or `light`                  |
-| color              | String  | `#000000`                                                                                                                                                                                | `rgba` or `hex`                    |
-| colors-default     | Array   | `['#000000', '#FFFFFF', '#FF1900', '#F47365', '#FFB243', '#FFE623', '#6EFF2A', '#1BC7B1', '#00BEFF', '#2E81FF', '#5D61FF', '#FF89CF', '#FC3CAD', '#BF3DCE', '#8E00A7', 'rgba(0,0,0,0)']` | like `['#ff00ff', '#0f0f0f', ...]` |
-| colors-history-key | String  | `colorpicker-history`                                                                                                                                                                    |
-| sucker-hide        | Boolean | `true`                                                                                                                                                                                   | `true` or `false`                  |
-
-## Events
-
-| Name        | Type     | Args   | Description            |
-| ----------- | -------- | ------ | ---------------------- |
-| changeColor | Function | color  | `{ rgba: {}, hsv: {}}` |
-| openSucker  | Function | isOpen | `true` or `false`      |
-
-> if you want use sucker, then `openSucker`, `sucker-hide`, `sucker-canvas`, `sucker-area` is necessary. when you click sucker button, you can click it again or press key of `esc` to exit.
-
-## colorpicker.canvasLoaded
+## new ColorPicker(options)
 
 ### Options
 
-| Name          | Type              | Default | Description                             |
-| ------------- | ----------------- | ------- | --------------------------------------- |
-| sucker-canvas | HTMLCanvasElement | `null`  | like `document.createElement('canvas')` |
-| sucker-area   | Array             | `[]`    | like `[x1, y1, x2, y2]`                 |
+| Name             | Type     | Default/Args                                                                                                                                                                             | Description                        |
+| ---------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------- |
+| theme            | String   | `dark`                                                                                                                                                                                   | `dark` or `light`                  |
+| color            | String   | `#000000`                                                                                                                                                                                | `rgba` or `hex`                    |
+| colorsDefault    | Array    | `['#000000', '#FFFFFF', '#FF1900', '#F47365', '#FFB243', '#FFE623', '#6EFF2A', '#1BC7B1', '#00BEFF', '#2E81FF', '#5D61FF', '#FF89CF', '#FC3CAD', '#BF3DCE', '#8E00A7', 'rgba(0,0,0,0)']` | like `['#ff00ff', '#0f0f0f', ...]` |
+| colorsHistoryKey | String   | `colorpicker-history`                                                                                                                                                                    |
+| suckerHide       | Boolean  | `true`                                                                                                                                                                                   | `true` or `false`                  |
+| changeColor      | Function | color                                                                                                                                                                                    | `{ rgba: {}, hsv: {}}`             |
+| openSucker       | Function | isOpen                                                                                                                                                                                   | `true` or `false`                  |
+
+> if you want use sucker, then `openSucker`, `suckerHide` is necessary. and when `canvas` is ready, call function `colorpicker.canvasLoaded` width args `suckerCanvas` and `suckerArea`. when you click sucker button, you can click it again or press key of `esc` to exit.
+
+## colorpicker.canvasLoaded(options)
+
+### Options
+
+| Name         | Type              | Default | Description                             |
+| ------------ | ----------------- | ------- | --------------------------------------- |
+| suckerCanvas | HTMLCanvasElement | `null`  | like `document.createElement('canvas')` |
+| suckerArea   | Array             | `[]`    | like `[x1, y1, x2, y2]`                 |
