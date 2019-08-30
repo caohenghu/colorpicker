@@ -1,6 +1,8 @@
 const webpack = require('webpack')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const path = require('path')
 
 const minify = {
@@ -14,39 +16,53 @@ const minify = {
     removeStyleLinkTypeAttributes: true // 删除style上的type
 }
 
-const rules = [
-    {
-        test: /\.js$/,
-        use: 'babel-loader'
-    },
-    {
-        test: /\.html$/,
-        use: 'html-loader'
-    },
-    {
-        test: /\.scss$/,
-        use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
-    },
-    {
-        test: /\.(png|jpg|gif|svg|ico)$/,
-        use: [
-            {
-                loader: 'url-loader',
-                options: {
-                    name: 'images/[name]-[hash:8].[ext]',
-                    limit: 1000
-                }
-            }
-        ]
-    }
-]
-
 module.exports = options => {
     const env = require('./env/' + options.config + '.js')
     const plugin = require('./env/pro.js').plugin
     const port = env.port || 8888
     const isLocal = options.local
     const libs = []
+    const rules = [
+        {
+            test: /\.js$/,
+            use: 'babel-loader'
+        },
+        {
+            test: /\.html$/,
+            use: [
+                {
+                    loader: 'html-loader',
+                    options: Object.assign(
+                        {
+                            minimize: true
+                        },
+                        minify
+                    )
+                }
+            ]
+        },
+        {
+            test: /\.scss$/,
+            use: [
+                isLocal ? 'style-loader' : MiniCssExtractPlugin.loader,
+                'css-loader',
+                'postcss-loader',
+                'sass-loader'
+            ]
+        },
+        {
+            test: /\.(png|jpg|gif|svg|ico)$/,
+            use: [
+                {
+                    loader: 'url-loader',
+                    options: {
+                        name: 'images/[name]-[hash:8].[ext]',
+                        limit: 1000
+                    }
+                }
+            ]
+        }
+    ]
     const plugins = [
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
@@ -58,6 +74,13 @@ module.exports = options => {
     ]
     if (isLocal) {
         plugins.push(new webpack.HotModuleReplacementPlugin())
+    } else {
+        plugins.push(
+            new OptimizeCssAssetsPlugin(),
+            new MiniCssExtractPlugin({
+                filename: 'css/[name]-[hash:8].min.css'
+            })
+        )
     }
 
     // 如果是本地开发，使用未压缩的插件
