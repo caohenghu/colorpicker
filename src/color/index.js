@@ -149,7 +149,8 @@ export default class Index {
         this.boxRgba.renderColor(this.rgbaStringShort)
         this.props.changeColor({
             rgba: this.rgba,
-            hsv: this.hsv
+            hsv: this.hsv,
+            hex: this.hexString
         })
     }
 
@@ -164,7 +165,8 @@ export default class Index {
         this.boxRgba.renderColor(this.rgbaStringShort)
         this.props.changeColor({
             rgba: this.rgba,
-            hsv: this.hsv
+            hsv: this.hsv,
+            hex: this.hexString
         })
     }
 
@@ -174,7 +176,8 @@ export default class Index {
         this.boxRgba.renderColor(this.rgbaStringShort)
         this.props.changeColor({
             rgba: this.rgba,
-            hsv: this.hsv
+            hsv: this.hsv,
+            hex: this.hexString
         })
     }
 
@@ -222,7 +225,8 @@ export default class Index {
         this.boxRgba.renderColor(this.rgbaStringShort)
         this.props.changeColor({
             rgba: this.rgba,
-            hsv: this.hsv
+            hsv: this.hsv,
+            hex: this.hexString
         })
     }
 
@@ -239,7 +243,8 @@ export default class Index {
         this.boxRgba.renderColor(this.rgbaStringShort)
         this.props.changeColor({
             rgba: this.rgba,
-            hsv: this.hsv
+            hsv: this.hsv,
+            hex: this.hexString
         })
     }
 
