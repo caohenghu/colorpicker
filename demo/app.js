@@ -1,8 +1,8 @@
 import './app.scss'
 import html from './app.html'
-import { html2Dom } from './color/mixin'
-import ColorPicker from './color/index'
-import imgCover from './img/cover.jpg'
+import { html2Dom } from '../src/color/mixin'
+import ColorPicker from '../src'
+import imgCover from './cover.jpg'
 
 export default class App {
     constructor() {
